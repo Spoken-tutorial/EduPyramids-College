@@ -1,8 +1,11 @@
 # backend/config/settings/base.py
 from pathlib import Path
+from dotenv import load_dotenv
 import os
 
 BASE_DIR = Path(__file__).resolve().parents[2]  # .../backend
+# Load .env from backend/
+load_dotenv(BASE_DIR / ".env")
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-unsafe-key")
 DEBUG = False
@@ -65,7 +68,16 @@ DATABASES = {
         "PASSWORD": os.getenv("DB_PASSWORD", ""),
         "HOST": os.getenv("DB_HOST", ""),
         "PORT": os.getenv("DB_PORT", ""),
-    }
+    },
+    "spoken": {
+        "ENGINE": os.getenv("SPK_DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.getenv("SPK_DB_NAME", BASE_DIR / "db.sqlite3"),
+        "USER": os.getenv("SPK_DB_USER", ""),
+        "PASSWORD": os.getenv("SPK_DB_PASSWORD", ""),
+        "HOST": os.getenv("SPK_DB_HOST", ""),
+        "PORT": os.getenv("SPK_DB_PORT", ""),
+    },
+
 }
 
 LANGUAGE_CODE = "en-us"
