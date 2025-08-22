@@ -1,2 +1,3 @@
-# EduPyramids-College
-EduPyramids - College Site 
+# Edupyramids - College Site
+
+Django API + React SPA.
