@@ -1,7 +1,11 @@
 # backend/apps/core/urls.py
 from django.urls import path
-from .views import health
+from django.conf import settings
+from django.conf.urls.static import static
+from .views import health, homepage, HomepageView, HPFiltersView
 
 urlpatterns = [
     path("health/", health, name="health"),
+    path("homepage/", HomepageView.as_view(), name="homepage"),
+    path("filters/", HPFiltersView.as_view(), name="filters"),
 ]

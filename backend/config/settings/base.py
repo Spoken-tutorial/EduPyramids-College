@@ -26,6 +26,8 @@ INSTALLED_APPS = [
 
     # local
     "apps.core",
+    "apps.spoken",
+    "apps.cms",
 ]
 
 MIDDLEWARE = [
@@ -38,6 +40,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
@@ -100,3 +103,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
+
+DATABASE_ROUTERS = ["config.CustomRouter.CustomRouter"]
