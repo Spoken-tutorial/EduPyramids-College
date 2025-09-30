@@ -12,7 +12,6 @@ import Popper from "@mui/material/Popper";
 import Paper from "@mui/material/Paper";
 import { useMemo, useState, useRef, useEffect } from "react";
 import { Typography, Stack } from "@mui/material";
-import type { PopperPlacementType } from "@mui/material/Popper";
 import CascadingFiltersManyToMany from "../../components/homepage/CascadingFilters";
 import { useFiltersQuery } from "../../features/filters/queries/useFilters";
 
