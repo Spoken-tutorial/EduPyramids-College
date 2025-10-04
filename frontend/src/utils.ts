@@ -1,152 +1,146 @@
-import { Bolt } from "lucide-react";
-import { ShoppingBag } from "lucide-react";
-import { BellDot } from "lucide-react";
-import { BookOpenText } from "lucide-react";
-import { BriefcaseBusiness } from "lucide-react";
-import { CircleHelp } from "lucide-react";
-import { TriangleAlert } from "lucide-react";
-import { Users } from "lucide-react";
-import { Lock } from "lucide-react";
-import { Dessert } from "lucide-react";
-import { ShieldPlus } from "lucide-react";
-import { MessageCircle } from "lucide-react";
-import { Images } from "lucide-react";
-import { Figma } from "lucide-react";
-import { Play } from "lucide-react";
-import { MapPin } from "lucide-react";
-import { Database } from "lucide-react";
-import { PanelsTopLeft } from "lucide-react";
-import { PanelTop } from "lucide-react";
-
 export const Menus = [
   {
-    name: "Software Training",
-    subMenuHeading: ["Design", "Scale"],
+    name: "Software",
+    subMenuHeading: ["Software Training", "Procedures", "Training", "Online Test"],
     subMenu: [
       {
-        name: "Design",
-        desc: "Responsive design",
-        icon: PanelsTopLeft,
+        name: "About the Training",
       },
       {
-        name: "Management",
-        desc: "Site control",
-        icon: Bolt,
+        name: "Progress",
       },
       {
-        name: "Navigation",
-        desc: "Link pages",
-        icon: PanelTop,
+        name: "Softwares",
       },
       {
-        name: "CMS",
-        desc: "Management content",
-        icon: Database,
+        name: "Contacts",
+      },
+      {
+        name: "Training Policy",
+      },
+      {
+        name: "Organising Training",
+      },
+      {
+        name: "Instructions",
+      },
+      {
+        name: "Create Image",
+      },
+      {
+        name: "Resource Center",
+      },
+      {
+        name: "Training & Payment",
+      },
+      {
+        name: "Sem Training Planner",
+      },
+      {
+        name: "Summary(STPS)",
+      },
+      {
+        name: "Student Dashboard",
+      },
+      {
+        name: "Individual Learning",
+      },
+      {
+        name: "Individual Learing Workshop",
+      },
+      {
+        name: "ILW Test Certificate",
+      },
+      {
+        name: "Subscription",
+      },
+      {
+        name: "Instructions for Invigilator",
+      },
+      {
+        name: "Instructions for Participants",
+      },
+      {
+        name: "Certificate Verification",
+      },
+      {
+        name: "Email Verification",
+      },
+      {
+        name: "Job Recommendation",
       },
     ],
     gridCols: 2,
   },
+
   {
     name: "Creation",
-    subMenuHeading: ["Get started", "Programs", "Recent"],
     subMenu: [
       {
-        name: "Markplace",
-        desc: "Browse templates",
-        icon: ShoppingBag,
+        name: "Creation Process",
       },
       {
-        name: "Meetups",
-        desc: "Upcoming events",
-        icon: MapPin,
+        name: "Outline and Script",
       },
       {
-        name: "Updates",
-        desc: "Changelog",
-        icon: BellDot,
+        name: "Creation Dashboard",
       },
       {
-        name: "Academy",
-        desc: "Watch lessions",
-        icon: Play,
+        name: "Suggest a Topic",
       },
       {
-        name: "Blog",
-        desc: "Posts",
-        icon: BookOpenText,
+        name: "Suggest Example",
       },
       {
-        name: "Figma",
-        desc: "Plugin",
-        icon: Figma,
-      },
-      {
-        name: "Experts",
-        desc: "Jobs",
-        icon: BriefcaseBusiness,
-      },
-      {
-        name: "Gallery",
-        desc: "Images",
-        icon: Images,
+        name: "Collaborate",
       },
     ],
     gridCols: 3,
   },
+
   {
     name: "News",
     subMenu: [
       {
-        name: "Help",
-        desc: "Center",
-        icon: CircleHelp,
+        name: "Testimonials",
       },
       {
-        name: "Community",
-        desc: "Project help",
-        icon: MessageCircle,
+        name: "Articles on Spoken Tutorial Project",
       },
       {
-        name: "Emergency",
-        desc: "Urgent issues",
-        icon: TriangleAlert,
+        name: "Events",  
+      },
+      {
+        name: "Research/Popular Articles",  
       },
     ],
     gridCols: 1,
   },
+
   {
     name: "Academics",
-    subMenuHeading: ["Overview", "Features"],
     subMenu: [
       {
-        name: "Enterprise",
-        desc: "Overview",
-        icon: ShieldPlus,
+        name: "MOOCs Acceptance",
       },
       {
-        name: "Collaboration",
-        desc: "Design together",
-        icon: Users,
+        name: "Official Letters and Links",
       },
       {
-        name: "Customers",
-        desc: "Stories",
-        icon: Dessert,
-      },
-      {
-        name: "Security",
-        desc: "Your site secured",
-        icon: Lock,
+        name: "Articles on University Tie-Ups/Workshops",
       },
     ],
     gridCols: 2,
   },
+
   {
     name: "About",
   },
+
   {
     name: "Forum",
   },
+
   {
     name: "Statistics",
   },

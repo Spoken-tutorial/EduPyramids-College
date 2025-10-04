@@ -15,7 +15,7 @@ function App() {
           </div>
         </nav>
 
-        <ul>
+        <ul className="flex-center gap-x-1">
           {Menus.map((menu)=>(
             <DesktopMenu menu={menu} key={menu.name} />
           ))}
