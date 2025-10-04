@@ -20,7 +20,18 @@ function App() {
             <DesktopMenu menu={menu} key={menu.name} />
           ))}
         </ul>
-      
+
+        <div className="flex-center gap-x-5 ">
+          <button className="bg-[#F9C60D] text-gray-900 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
+            Login
+          </button>
+          <button className="bg-black text-white z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
+            Register
+          </button>
+          <img src="/" alt="/" className="size-8" />
+          {/* <img src={Logo} alt="logo" className="size-8" /> */}
+        </div>
+
       </header>
     </div>
   )

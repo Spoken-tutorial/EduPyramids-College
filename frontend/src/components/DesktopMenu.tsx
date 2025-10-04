@@ -1,8 +1,36 @@
 import { ChevronDown } from "lucide-react";
-
+import { useState } from "react";
+import { motion } from "framer-motion";
+ 
 export default function DesktopMenu({ menu }){
+  const [isHover, setIsHover] = useState(false);
+
+  const toggleHoverMenu = () => {
+    setIsHover(!isHover);
+  }
+
+  const subMenuAnimate = {
+    enter: {
+      opacity: 1,
+      rotateX: 0,
+      transition: {
+        duration:0.5
+      },
+      display: "block",
+    },
+    exit: {
+      opacity: 0,
+      rotateX:-15,
+      transition:{
+        duration:0.5
+      },
+      display: "none",
+    },
+  }
+
   const hasSubMenu = menu?.subMenu?.length>0;
-  return <li className="group/link">
+
+  return <motion.li className="group/link" onHoverStart={toggleHoverMenu} onHoverEnd={toggleHoverMenu}>
     
     <span className="flex-center gap-1 cursor-pointer px-3 py-1 rounded-xl">
       {/* REPLACE HERE WITH ROUTER LINK AS NEEDED */}
@@ -11,8 +39,10 @@ export default function DesktopMenu({ menu }){
     </span>
     {
       hasSubMenu && (
-        <div className="sub-menu">
-          <div>
+        <motion.div className="sub-menu" initial="exit" animate={isHover ? "enter" : "exit"} variants={subMenuAnimate}>
+          <div className={`grid gap-7 ${
+            menu.gridCols === 3 ? 'grid-cols-3' : menu.gridCols === 2 ? 'grid-cols-2' : 'grid-cols-1'
+          }`}>
             {
               menu?.subMenu?.map((subMenu, i)=>(
                 <div key={i} className="relative cursor-pointer">
@@ -25,8 +55,8 @@ export default function DesktopMenu({ menu }){
               ))
             }
           </div>
-        </div>
+        </motion.div>
       )
     }
-  </li>
+  </motion.li>
 }
