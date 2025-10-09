@@ -1,45 +1,43 @@
-// import Logo from "./assets/";
 import DesktopMenu from "./components/DesktopMenu";
-import { Menus } from "./utils.ts";
-import MobileMenu from "./components/MobileMenu.tsx"
+import MobileMenu from "./components/MobileMenu";
+import { Menus } from "./utils";
 
 function App() {
   return (
     <div>
-      <header className="h-16 text-[15px] fixed inset-0 flex-center bg-[#2A3491]">
-        
-        <nav className="px-3.5 flex-center-between w-full max-w-7xl mx-auto">
-          <div className="flex-center gap-x-3 z-[999] relative">
+      <header className="h-16 text-[15px] fixed inset-x-0 top-0 bg-[#2A3491] z-50">
+        <nav className="px-3.5 flex items-center justify-between w-full max-w-7xl mx-auto h-16">
+          <div className="flex items-center gap-x-3">
             <img src="/" alt="/" className="size-8" />
-            {/* <img src={Logo} alt="logo" className="size-8" /> */}
-            <h3 className="text-lg font-semibold">Spoken Tutorial</h3>
+            <h3 className="text-lg font-semibold text-white">Spoken Tutorial</h3>
+          </div>
+
+          {/* Desktop Menu (only on lg+, hidden below lg) */}
+          <ul className="hidden lg:flex items-center gap-x-1 ml-10">
+            {Menus.map(menu => (
+              <DesktopMenu menu={menu} key={menu.name} />
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-x-5">
+            {/* Hide on small screens */}
+            <button className="hidden lg:flex bg-[#F9C60D] text-gray-900 px-3 py-1.5 shadow rounded-xl items-center">
+              Login
+            </button>
+            <button className="hidden lg:flex bg-black text-white px-3 py-1.5 shadow rounded-xl items-center">
+              Register
+            </button>
+            <img src="/" alt="/" className="hidden lg:block size-8" />
+
+            {/* MobileMenu (only below lg) */}
+            <div className="flex lg:hidden">
+              <MobileMenu Menus={Menus} />
+            </div>
           </div>
         </nav>
-
-        <ul className="flex-center gap-x-1">
-          {Menus.map((menu)=>(
-            <DesktopMenu menu={menu} key={menu.name} />
-          ))}
-        </ul>
-
-        <div className="flex-center gap-x-5 ">
-          <button className="bg-[#F9C60D] text-gray-900 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
-            Login
-          </button>
-          <button className="bg-black text-white z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
-            Register
-          </button>
-          <img src="/" alt="/" className="size-8" />
-          {/* <img src={Logo} alt="logo" className="size-8" /> */}
-
-          <div className="lg:hidden">
-            <MobileMenu Menus={Menus} />
-          </div>
-        </div>
-
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -71,3 +71,9 @@ export default defineConfig([
   },
 ])
 ```
+
+
+FRONTEND
+
+> Read the package list from package.json
+> To run this type: npm run dev
