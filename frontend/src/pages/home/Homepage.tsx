@@ -17,28 +17,29 @@ export default function HomePage(){
   const { data: filters, isLoading: filtersLoading } = useFiltersQuery();
   
   
-  if (homeLoading || filtersLoading || !filters) return <p>Loading..........</p>;
+  // if (homeLoading || filtersLoading || !filters) return <p>Loading..........</p>;
 
   console.log(homepage)
   console.log("filters")
   console.log(filters)
 
   return (
-    homepage && (
+    // homepage && 
+    (
       <Box>
-        <MainCarousel slides={homepage.carousel} />
+        <MainCarousel slides={homepage?.carousel} />
         <Box sx={{ px: { xs: 2, md: 6 }, py: 2 }} display="flex" flexDirection="column" gap={10}>
-           <CascadingFiltersManyToMany
+           {/* <CascadingFiltersManyToMany
             data={filters}
             // onSearch={({ domainId, fossId, languageId }) => console.log({ domainId, fossId, languageId })}
             onSearch={() => console.log("Test")}
-          />
+          /> */}
           <Box>
             <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>Ready To Learn?</Typography>
             <Typography variant="h5">Master open-source software with us.</Typography>
           </Box>
                   <Box sx={{ backgroundColor: pink}}>
-                 <Catalog catalogue={homepage.catalogue} />
+                 <Catalog catalogue={homepage?.catalogue} />
                </Box>
                <Box>
                  <Components.FeatureTiles/>
