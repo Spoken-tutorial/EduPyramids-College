@@ -13,9 +13,10 @@ import { useFiltersQuery } from "../../features/filters/queries/useFilters";
 
 export default function HomePage(){
 
-  const { data: homepage, isLoading: homeLoading } = useHomepageQuery();
-  const { data: filters, isLoading: filtersLoading } = useFiltersQuery();
-  
+  // const { data: homepage, isLoading: homeLoading } = useHomepageQuery();
+  // const { data: filters, isLoading: filtersLoading } = useFiltersQuery();
+  const homepage = null;
+  const filters = null;
   
   // if (homeLoading || filtersLoading || !filters) return <p>Loading..........</p>;
 
