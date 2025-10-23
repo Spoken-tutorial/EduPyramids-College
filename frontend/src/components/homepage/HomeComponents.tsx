@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Button, Card, CardContent, CardMedia, Grid, Link, Typography } from "@mui/material";
+import { Box, Card, CardContent, Grid, Link, Typography } from "@mui/material";
 import ComputerIcon from "@mui/icons-material/Computer";
 import ForumIcon from "@mui/icons-material/Forum";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";

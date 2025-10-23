@@ -6,7 +6,7 @@ import { Box, Typography, useScrollTrigger } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Catalog from "../components/creation/Catalog";
 import FeatureSplit from "../components/homepage/FeatureSplit";
-import ResponsiveAppBar from "../components/homepage/ResponsiveAppBar";
+import { DesktopMenu, MobileMenu } from "../components/ResponsiveAppBar";
 import CascadingFiltersManyToMany from "../components/homepage/CascadingFilters";
 import MainCarousel from "../components/homepage/MainCarousel";
 import { pink } from "@mui/material/colors";
@@ -47,7 +47,7 @@ export default function HomePage(){
 
   return (
     <>
-        {/* <ResponsiveAppBar/> */}
+        <ResponsiveAppBar/>
         {homepageData ? (
           <Box >
         <MainCarousel slides={homepageData?.carousel}/>
