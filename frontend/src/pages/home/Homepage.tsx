@@ -5,13 +5,12 @@ import CascadingFiltersManyToMany from "../../components/homepage/CascadingFilte
 import MainCarousel from "../../components/homepage/MainCarousel";
 import { pink } from "@mui/material/colors";
 import { Components } from "../../components/homepage/HomeComponents"
-import { useEffect, useState } from "react";
-import api from "../../api/axios";
 import { useHomepageQuery } from "../../features/homepage/queries/useHomepage";
 import { useFiltersQuery } from "../../features/filters/queries/useFilters";
 import Testimonials from "../../components/homepage/Testimonials";
 import ContactUsForm from "../../components/homepage/ContactUs";
 import CollaborateSection from "../../components/homepage/Collaborate";
+import Footer from "../../components/homepage/Footer";
 
 
 export default function HomePage(){
@@ -19,16 +18,25 @@ export default function HomePage(){
   const { data: homepage, isLoading: homeLoading } = useHomepageQuery();
   const { data: filters, isLoading: filtersLoading } = useFiltersQuery();
   
-  
-  if (homeLoading || filtersLoading || !filters) return <p>Loading..........</p>;
+  const isLoadingState = homeLoading || filtersLoading || !filters;
+
+  if (isLoadingState) return (
+    <Box display="flex" flexDirection="column" minHeight="100vh">
+      <Box flexGrow={1} display="flex" alignItems="center" justifyContent="center" px={2}>
+        <Typography component="p" variant="body1">Loading..........</Typography>
+      </Box>
+      <Footer />
+    </Box>
+  );
 
   console.log(homepage)
   console.log("filters")
   console.log(filters)
 
   return (
-    homepage && (
-      <Box>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
+      {homepage && (
+      <Box flexGrow={1}>
         {/* Carousal */}
         <MainCarousel slides={homepage.carousel} />
 
@@ -59,7 +67,7 @@ export default function HomePage(){
           {/* Section: Feature */}
           <Grid container gap={2} alignItems="stretch">
             
-            <Grid item >
+            <Grid size={{ xs: 12, md: 6 }} >
                <Paper sx={{ height: "100%", p: 2 }}>
                 <FeatureSplit
             title="Why Should Colleges/Universities Join?"
@@ -75,7 +83,7 @@ export default function HomePage(){
           />
                </Paper>
             </Grid>
-            <Grid item>
+            <Grid size={{ xs: 12, md: 5 }}>
               <Paper
                 sx={{
                   height: "100%",
@@ -117,8 +125,13 @@ export default function HomePage(){
              </Box>
 
         </Box>
+        
       </Box>
-    )
+      )}
+      
+      {/* Footer - Always visible */}
+      <Footer />
+    </Box>
   )
   // const [homepageData, setHomepageData] = useState<unknown>(null);
 
