@@ -1,3 +1,6 @@
+import '@fontsource/inter';         // default 400 weight
+import '@fontsource/inter/400.css'; // explicitly 400
+import '@fontsource/inter/700.css'; // explicitly 700
 import { useMemo, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider, CssBaseline } from '@mui/material';

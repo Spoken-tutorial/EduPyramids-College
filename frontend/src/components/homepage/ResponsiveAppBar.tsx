@@ -135,8 +135,10 @@ export default function ResponsiveAppBar() {
                     sx={{
                       color: theme.palette.getContrastText(theme.palette.primary.main),
                       "&:hover": { bgcolor: "rgba(255,255,255,0.12)" },
-                      fontWeight: 600,
+                      fontWeight: 100,
+                      fontSize:12
                     }}
+                    color="primary"
                   >
                     {item.label}
                   </Button>
@@ -165,7 +167,7 @@ export default function ResponsiveAppBar() {
 
             <Box sx={{ flex: 1 }} />
 
-            <Button color="inherit" sx={{ fontWeight: 600 }} onClick={() => go("Login")}>
+            <Button onClick={() => go("Login")}>
               Login
             </Button>
             <Button

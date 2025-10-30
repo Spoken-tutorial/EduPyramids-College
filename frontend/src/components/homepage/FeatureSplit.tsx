@@ -1,5 +1,21 @@
 // FeatureSplit.tsx
-import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+import SchoolIcon from "@mui/icons-material/School";              // For curriculum & learning
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";    // For skill development
+import WorkIcon from "@mui/icons-material/Work";                  // For employability
+import PeopleIcon from "@mui/icons-material/People";              // For teachers & students
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";    // For affordability
 
 type FeatureSplitProps = {
   title: string;
@@ -14,12 +30,21 @@ export default function FeatureSplit({
   imageSrc,
   imageTitle = "Notification",
 }: FeatureSplitProps) {
+  // Map each bullet to a relevant icon
+  const icons = [
+    <SchoolIcon color="primary" />,
+    <BuildCircleIcon color="primary" />,
+    <WorkIcon color="primary" />,
+    <PeopleIcon color="primary" />,
+    <AttachMoneyIcon color="primary" />,
+  ];
+
   return (
-    <Box sx={{ px: { xs: 2, md: 6 }, py: { xs: 3, md: 6 } }}>
+    <Box sx={{ px: { xs: 2, md: 6 }, py: { xs: 3, md: 3 } }}>
       <Grid container spacing={4} alignItems="center">
         {/* Left: text */}
         <Grid item xs={12} md={7}>
-          <Typography variant="h5" fontWeight={700} gutterBottom>
+          <Typography variant="subtitle1" fontWeight={700} gutterBottom>
             {title}
           </Typography>
 
@@ -27,16 +52,21 @@ export default function FeatureSplit({
             By subscribing to Spoken Tutorial, your institution can provide students and faculty with:
           </Typography>
 
-          {/* Bullets */}
-          <Typography component="ul" sx={{ pl: 3, m: 0, lineHeight: 1.9 }}>
-            {bullets.map((b, i) => (
-              <li key={i}>{b}</li>
+          <List sx={{ pl: 1 }}>
+            {bullets.map((text, i) => (
+              <ListItem key={i} sx={{ alignItems: "flex-start", py: 0.5 }}>
+                <ListItemIcon sx={{ minWidth: 40 }}>{icons[i]}</ListItemIcon>
+                <ListItemText
+                  primaryTypographyProps={{ fontSize: 15, lineHeight: 1.6 }}
+                  primary={text}
+                />
+              </ListItem>
             ))}
-          </Typography>
+          </List>
         </Grid>
 
         {/* Right: image card */}
-        <Grid item xs={12} md={5}>
+        {/* <Grid item xs={12} md={5}>
           <Card
             sx={{
               bgcolor: "action.hover",
@@ -49,7 +79,9 @@ export default function FeatureSplit({
             <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 1 }}>
               {imageTitle}
             </Typography>
-            <CardContent sx={{ p: 0, display: "flex", justifyContent: "center" }}>
+            <CardContent
+              sx={{ p: 0, display: "flex", justifyContent: "center" }}
+            >
               <Box
                 component="img"
                 src={imageSrc}
@@ -62,7 +94,7 @@ export default function FeatureSplit({
               />
             </CardContent>
           </Card>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );

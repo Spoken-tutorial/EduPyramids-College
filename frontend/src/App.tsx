@@ -1,6 +1,7 @@
 
 import { Routes, Route } from "react-router-dom";
 import ResponsiveAppBar from "./components/homepage/ResponsiveAppBar";
+import MegaMenu from "./components/homepage/AppBar";
 // import FeatureTiles from "./components/homepage/HomeComponents";
 import HomePage from "./pages/home/Homepage";
 import DomainPage from "./pages/public/DomainsPage";
@@ -12,7 +13,8 @@ export default function App(){
 
   return (
     <>
-        <ResponsiveAppBar/>
+        {/* <ResponsiveAppBar/> */}
+        <MegaMenu/>
         {/* <HomePage /> */}
         {/* Define the routes */}
         <Routes>

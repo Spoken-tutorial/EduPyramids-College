@@ -5,7 +5,15 @@ DEBUG = True
 INSTALLED_APPS += ["silk"]
 MIDDLEWARE = ["silk.middleware.SilkyMiddleware", *MIDDLEWARE]
 
-SPOKEN_MEDIA_HOST = "http://127.0.0.1:8002"
+# SPOKEN_HOST = "https://beta.spoken-tutorial.org"
+SPOKEN_HOST = "http://127.0.0.1:8002"
+# SPOKEN_MEDIA_HOST = f"{SPOKEN_HOST}/static/media/"
+SPOKEN_MEDIA_HOST = f"{SPOKEN_HOST}"
+# SPOKEN_MEDIA_HOST = "https://beta.spoken-tutorial.org/static/media/"
+
+
+
+# SPOKEN_MEDIA_HOST
 HOST = "http://127.0.0.1:8000"
 
 # Debug toolbar settings

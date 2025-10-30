@@ -40,6 +40,9 @@ export const useFiltersStore = create(
       },
 
       fromSearchParams: (params) => {
+        console.log("search_foss: ", params.get("search_foss"));
+        console.log("search_language: ", params.get("search_language"));
+        console.log("search_domain: ", params.get("search_domain"));
         set({
           filters: {
             foss: params.get("search_foss"),

@@ -35,7 +35,7 @@ export default function MainCarousel({ slides }: MainCarouselProps): JSX.Element
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center"}}>
-      <Box sx={{ maxWidth: 1600, flexGrow: 1, position: "relative"}}>
+      <Box sx={{ maxWidth: 1600, flexGrow: 1, position: "relative", padding: "8px"}}>
         {/* Image (with optional link) */}
         {currentSlide.link_url ? (
           <a href={currentSlide.link_url} target="_blank" rel="noopener noreferrer">

@@ -3,6 +3,7 @@ import { Autocomplete, TextField, Box, Button, Grid, useTheme } from "@mui/mater
 import { useNavigate } from "react-router-dom";
 import { useFiltersStore } from "../../features/filters/store/filters";
 
+
 /** ---- Types that match your JSON exactly ---- */
 type Domain = { id: number; name: string; slug: string };
 type Foss = { id: number; name: string; slug: string; languageIds: number[] };
@@ -21,8 +22,12 @@ type Props = {
 };
 
 export default function CascadingFiltersManyToMany({ data }: Props) {
+// export default function CascadingFiltersManyToMany() {
   const theme = useTheme();
   const navigate = useNavigate();
+
+  /** ---- Data from React Query ---- */
+  
 
   /** ---- Global filters from Zustand ---- */
   const filters = useFiltersStore((s) => s.filters);
@@ -31,6 +36,7 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
   const toSearchParams = useFiltersStore((s) => s.toSearchParams);
 
   const onSearch = () => {
+    console.log('on serach clicked');
     const qs = toSearchParams();
     navigate(`/tutorial-search?${qs.toString()}`);
   };
@@ -96,9 +102,11 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
     resetStore();
   };
 
+  // if (filtersLoading || !data) return <p>Loading..........</p>;
+
   return (
     <Box>
-      <Grid container spacing={4} alignItems="center" wrap="nowrap" sx={{ overflowX: "auto" }}>
+      <Grid container spacing={4} alignItems="center" wrap="nowrap" sx={{ overflowX: "auto" , margin: "auto"}}>
         {/* Domain */}
         <Grid item xs={12} sm="auto" minWidth={320}>
           <Autocomplete
@@ -143,12 +151,14 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
 
       <Grid container sx={{ mt: 1 }} gap={2}>
         <Grid item xs={6} sm="auto">
-          <Button variant="contained" color="secondary" onClick={onSearch} sx={{ fontWeight: 800 }}>
+          {/* <Button variant="contained" color="secondary" onClick={onSearch} sx={{ fontWeight: 800 }}> */}
+          <Button onClick={onSearch}>
             Search
           </Button>
         </Grid>
         <Grid item xs={6} sm="auto">
-          <Button variant="outlined" color="secondary" onClick={handleReset} sx={{ fontWeight: 800 }}>
+          {/* <Button variant="outlined" color="secondary" onClick={handleReset} sx={{ fontWeight: 800 }}> */}
+          <Button variant="outlined"  onClick={handleReset} color="black">
             Reset
           </Button>
         </Grid>

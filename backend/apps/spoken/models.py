@@ -68,8 +68,8 @@ class CreationTutorialresource(models.Model):
     # tutorial_detail_id = models.IntegerField(db_column='tutorial_detail_id')
     # common_content = models.ForeignKey('CreationTutorialcommoncontent', models.DO_NOTHING)
     common_content_id = models.IntegerField(db_column='common_content_id')
-    # language = models.ForeignKey('CreationLanguage', models.DO_NOTHING)
-    language_id = models.IntegerField(db_column='language_id')
+    language = models.ForeignKey('CreationLanguage', models.DO_NOTHING)
+    # language_id = models.IntegerField(db_column='language_id')
     outline = models.TextField()
     # outline_user = models.ForeignKey('AuthUser', models.DO_NOTHING)
     outline_user_id = models.IntegerField(db_column='outline_user_id')
@@ -102,13 +102,20 @@ class CreationTutorialresource(models.Model):
         db_table = 'creation_tutorialresource'
         # unique_together = (('tutorial_detail', 'language'),)
 
+class CreationLevel(models.Model):
+    level = models.CharField(max_length=255)
+    code = models.CharField(max_length=10)
+
+    class Meta:
+        managed = False
+        db_table = 'creation_level'
 
 class CreationTutorialdetail(models.Model):
     foss = models.ForeignKey(CreationFosscategory, models.DO_NOTHING)
     # foss_id = models.IntegerField(db_column='foss_id_id')
     tutorial = models.CharField(max_length=255)
-    # level = models.ForeignKey('CreationLevel', models.DO_NOTHING)
-    level_id = models.IntegerField(db_column='level_id')
+    level = models.ForeignKey('CreationLevel', models.DO_NOTHING)
+    # level_id = models.IntegerField(db_column='level_id')
     order = models.IntegerField()
     # user = models.ForeignKey('AuthUser', models.DO_NOTHING)
     user_id = models.IntegerField(db_column='user_id')

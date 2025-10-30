@@ -1,8 +1,9 @@
-import { Box, Button, Card, CardContent, CardMedia, Chip, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Chip, colors, IconButton, Stack, Typography } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {useTheme} from "@mui/material";
 
 // ------------ Props (matches your API) ------------
 type ApiCourse = { foss: string; tag?: string; icon: string };
@@ -39,6 +40,7 @@ const cardStyle = {
 // ------------ Component ------------
 export default function Catalog({ catalogue }: CatalogProps) {
 
+  const theme = useTheme()
   const navigate = useNavigate();
   // transform API -> internal shape with numeric ids
   const DOMAINS = useMemo(
@@ -153,10 +155,10 @@ export default function Catalog({ catalogue }: CatalogProps) {
 
         {/* HEADER */}
         <Stack direction="row" alignItems="baseline" justifyContent="space-between" sx={{ mb: 2 }}>
-          <Typography variant="subtitle1" fontWeight={700} sx={{ ml: 5 }}>
+          <Typography variant="subtitle2" fontWeight={400} sx={{ ml: 5 }}>
             {active !== -1 ? `${activeDomainName} courses` : "No courses"}
           </Typography>
-          <Button size="small" variant="outlined" disabled={courses.length === 0} sx={{ mr: 5 }}>
+          <Button size="small" variant="outlined" disabled={courses.length === 0} sx={{ mr: 5 }} color="primary">
             {active !== -1 ? `View all ${activeDomainName} courses` : "View all"}
           </Button>
         </Stack>
@@ -177,13 +179,13 @@ export default function Catalog({ catalogue }: CatalogProps) {
                 <Card key={course.id} sx={cardStyle}>
                   <CardMedia component="img" height="180" image={course.image} alt={course.name} />
                   <CardContent>
-                    <Typography variant="subtitle1" fontWeight={700} gutterBottom noWrap>
+                    <Typography variant="body1" fontWeight={700} gutterBottom noWrap>
                       {course.name}
                     </Typography>
                     <Stack direction="row" spacing={1} alignItems="center" mt={1}>
-                      <Typography variant="body2" fontWeight={700}>
+                      {/* <Typography variant="body2" fontWeight={700}>
                         2hrs
-                      </Typography>
+                      </Typography> */}
                       {course.tag && (
                         <Chip size="small" label={course.tag} color="success" variant="outlined" sx={{ borderRadius: 1 }} />
                       )}
