@@ -3,41 +3,20 @@ import type { SvgIconProps } from "@mui/material/SvgIcon";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { footerLinks, socialLinks as socialData, footerConfig } from "../../constants/footer";
 
 export default function Footer() {
-  const footerLinks = {
-    column1: [
-      { label: "FOSSEE Project", href: "#" },
-      { label: "Scilab", href: "#" },
-      { label: "eSlim", href: "#" },
-      { label: "Python", href: "#" },
-      { label: "OpenFoam", href: "#" },
-    ],
-    column2: [
-      { label: "Aakash Labs", href: "#" },
-      { label: "Co-learn", href: "#" },
-      { label: "Education Mission", href: "#" },
-    ],
-    column3: [
-      { label: "Software Training", href: "#" },
-      { label: "Contacts for training", href: "#" },
-      { label: "Training Dashboard", href: "#" },
-      { label: "Creation Dashboard", href: "#" },
-    ],
-    column4: [
-      { label: "About US", href: "#" },
-      { label: "News", href: "#" },
-      { label: "Terms & Condition", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-    ],
+  const socialIconMap: { [key: string]: React.ReactNode } = {
+    YouTube: <YouTubeIcon fontSize="medium" />,
+    Facebook: <FacebookIcon fontSize="medium" />,
+    LinkedIn: <LinkedInIcon fontSize="medium" />,
+    Skype: <SkypeIcon fontSize="medium" />,
   };
 
-  const socialLinks = [
-    { label: "YouTube", href: "https://www.youtube.com/user/SpokenTutorialIITB", icon: <YouTubeIcon fontSize="medium" /> },
-    { label: "Facebook", href: "https://www.facebook.com/SpokenTutorial.org", icon: <FacebookIcon fontSize="medium" /> },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/spokentutorial/", icon: <LinkedInIcon fontSize="medium" /> },
-    { label: "Skype", href: "https://www.skype.com", icon: <SkypeIcon fontSize="medium" /> },
-  ];
+  const socialLinks = socialData.map((social) => ({
+    ...social,
+    icon: socialIconMap[social.label],
+  }));
 
   function SkypeIcon(props: SvgIconProps) {
     return (
@@ -124,17 +103,17 @@ export default function Footer() {
               <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
                 <Box
                   component="img"
-                  src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"
+                  src={footerConfig.license.badge}
                   alt="Creative Commons License"
                   sx={{ height: 24, width: 66 }}
                 />
                 <Typography variant="caption" sx={{ fontSize: "0.75rem" }}>
-                  Spoken Tutorial, created on or before 31 Jan. 2025, by{" "}
-                  <Link href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
+                  Spoken Tutorial, created on or before {footerConfig.license.year}, by{" "}
+                  <Link href={footerConfig.license.iitbUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
                     IIT Bombay
                   </Link>
                   {" "}is licensed under a{" "}
-                  <Link href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
+                  <Link href={footerConfig.license.licenseUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
                     Creative Commons Attribution-ShareAlike 4.0 International License
                   </Link>
                   , except where stated otherwise
@@ -143,12 +122,12 @@ export default function Footer() {
 
               <Typography variant="caption" sx={{ fontSize: "0.75rem", display: "block", mb: 0.5 }}>
                 Based on a work at{" "}
-                <Link href="https://spoken-tutorial.org" target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
-                  https://spoken-tutorial.org
+                <Link href={footerConfig.license.workUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
+                  {footerConfig.license.workUrl}
                 </Link>
                 . Permissions beyond the scope of this license may be available at{" "}
-                <Link href="https://spoken-tutorial.org" target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
-                  https://spoken-tutorial.org
+                <Link href={footerConfig.license.workUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
+                  {footerConfig.license.workUrl}
                 </Link>
               </Typography>
 
@@ -168,8 +147,8 @@ export default function Footer() {
           >
             <Box
               component="img"
-              src="https://spoken-tutorial.org/static/spoken/images/iitb-logo.png"
-              alt="IITB Logo"
+              src={footerConfig.logo.src}
+              alt={footerConfig.logo.alt}
               sx={{
                 width: 140,
                 height: 140,
@@ -189,26 +168,13 @@ export default function Footer() {
 
             <Box sx={{ maxWidth: 260 }}>
               <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                Contact US
+                {footerConfig.contact.title}
               </Typography>
-              <Typography variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
-                Spoken Tutorial Project,
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
-                TCS Lab, Behind CAD Centre,
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
-                IIT Bombay, Powai,
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
-                Mumbai - 400076
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
-                + 91 22 25764229
-              </Typography>
-              <Typography variant="body2" sx={{ fontSize: "0.875rem" }}>
-                contact [at] spoken-tutorial [dot] org
-              </Typography>
+              {footerConfig.contact.lines.map((line, index) => (
+                <Typography key={index} variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
+                  {line}
+                </Typography>
+              ))}
             </Box>
           </Grid>
         </Grid>
