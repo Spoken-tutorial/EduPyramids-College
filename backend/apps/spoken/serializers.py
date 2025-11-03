@@ -20,7 +20,9 @@ class CourseSerializer(serializers.ModelSerializer):
         return ""
     
     def get_icon(self, obj):
-        return f"{settings.SPOKEN_MEDIA_HOST}{obj.icon.url}"
+        if obj.icon:
+            return f"{settings.SPOKEN_MEDIA_HOST}{obj.icon.url}"
+        return None
     
 class DomainSerializer(serializers.ModelSerializer):
     courses = CourseSerializer(source='fosscategories', many=True)
@@ -48,7 +50,10 @@ class DomainsPageSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'icon', 'description']
 
     def get_icon(self, obj):
-        return f"{settings.SPOKEN_MEDIA_HOST}{obj.icon.url}"
+        if obj.icon:
+            return f"{settings.SPOKEN_MEDIA_HOST}{obj.icon.url}"
+        return None
+        
     
 # Tutorials Page serializers -----------------------------------------
 class TutorialListSerializer(serializers.ModelSerializer):
@@ -75,4 +80,6 @@ class CourseListSerializer(serializers.ModelSerializer):
         fields = ['foss', 'description', 'icon']
 
     def get_icon(self, obj):
-        return f"{settings.SPOKEN_MEDIA_HOST}{obj.icon.url}"
+        if obj.icon:
+            return f"{settings.SPOKEN_MEDIA_HOST}{obj.icon.url}"
+        return None
