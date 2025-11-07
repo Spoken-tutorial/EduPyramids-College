@@ -7,6 +7,7 @@ import HomePage from "./pages/home/Homepage";
 import DomainPage from "./pages/public/DomainsPage";
 import CoursePage from "./pages/public/CoursePage";
 import TutorialSearch from "./pages/public/TutorialSearch";
+import LoginPage from "./features/auth/pages/LoginPage";
 
 
 export default function App(){
@@ -19,6 +20,7 @@ export default function App(){
         {/* Define the routes */}
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/domains" element={<DomainPage />} />
           <Route path="/tutorial-search" element={<TutorialSearch />} />
           <Route path="/domains/:slug" element={<CoursePage />} />
