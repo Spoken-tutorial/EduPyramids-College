@@ -27,7 +27,7 @@ export default function BrandLogo({
         gap: 1,
         // px: 1.25,
         // py: 0.75,
-         px: 1.25,
+         px: 2.0,
         py: 0.75,
         borderRadius: 999,                                // pill
         bgcolor: "common.white",

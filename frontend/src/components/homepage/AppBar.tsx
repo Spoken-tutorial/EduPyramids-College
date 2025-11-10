@@ -10,6 +10,10 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import { useTheme } from "@mui/material/styles";
 import BrandLogo from "./BrandLogo";
+import Login from "../../features/auth/components/Login";
+import { useNavigate } from "react-router-dom";
+
+
 
 /* ---------- Types ---------- */
 type ChildLink = { section: string; label: string; href?: string; badge?: "new" | "beta" };
@@ -73,6 +77,7 @@ const NAV_ITEMS: NavItem[] = [
 
 export default function ResponsiveAppBar() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const contrast = theme.palette.getContrastText(theme.palette.primary.main);
 
   /* ---------- Mobile drawer ---------- */
@@ -94,6 +99,7 @@ export default function ResponsiveAppBar() {
   /* ---------- Navigate (stub) ---------- */
   const go = (label: string) => {
     console.log("navigate to:", label);
+    navigate("login/")
     closeDesktopMenu();
     setDrawerOpen(false);
   };
@@ -127,11 +133,12 @@ export default function ResponsiveAppBar() {
           /> */}
            {/* LEFT logo (keep label hidden on xs; show from md if you want) */}
         <BrandLogo
-        src={`${mediaUrl}/logos/spoken_tutorial.png`}
+        src={`${mediaUrl}/logos/spoken_tutorial_logo.png`}
         alt="Spoken Tutorial"
         label="Spoken Tutorial"
         showLabel={false}                 // set true if you want the name next to logo
         height={80}
+        
         />
 
 
@@ -274,15 +281,15 @@ export default function ResponsiveAppBar() {
             </Box> */}
              {/* RIGHT logo (slightly larger, label optional) */}
 <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 1.5 }}>
-  <Button variant="text" color="inherit" onClick={() => go("Login")} sx={{ color: contrast, fontWeight: 500 }}>
-    Login
+  <Button  color="secondary" variant="outlined" onClick={() => go("Login")} >
+    Login 
   </Button>
   <Button variant="contained" color="secondary" onClick={() => go("Register")} sx={{ fontWeight: 800 }}>
     Register
   </Button>
 
   <BrandLogo
-    src={`${mediaUrl}/logos/edupyramids.png`}
+    src={`${mediaUrl}/logos/edupyramids_logo.png`}
     alt="EduPyramids"
     label="EduPyramids"
     showLabel={false}               // flip to true if you like the label chip
