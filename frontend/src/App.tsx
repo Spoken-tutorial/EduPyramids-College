@@ -1,12 +1,12 @@
 
 import { Routes, Route } from "react-router-dom";
-import ResponsiveAppBar from "./components/homepage/ResponsiveAppBar";
 import MegaMenu from "./components/homepage/AppBar";
 // import FeatureTiles from "./components/homepage/HomeComponents";
 import HomePage from "./pages/home/Homepage";
 import DomainPage from "./pages/public/DomainsPage";
 import CoursePage from "./pages/public/CoursePage";
 import TutorialSearch from "./pages/public/TutorialSearch";
+import SubscriptionPage from "./pages/public/SubscriptionPage";
 import LoginPage from "./features/auth/pages/LoginPage";
 import DashboardLayout from "./features/dashboard/pages/DashboardLayout";
 import PublicLayout from "./pages/public/PublicLayout";
@@ -31,6 +31,7 @@ export default function App(){
             <Route path="/domains" element={<DomainPage />} />
             <Route path="/tutorial-search" element={<TutorialSearch />} />
             <Route path="/domains/:slug" element={<CoursePage />} />
+            <Route path="/subscription" element={<SubscriptionPage />} />
           </Route>
 
          {/* Dashboard routes */}
