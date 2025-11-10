@@ -4,7 +4,8 @@ import api from "../../../api/axios";
 export function useHomepageQuery() {
   return useQuery({
     queryKey: ['homepage'],
-    queryFn: async () => (await api.get('api/homepage/')).data,
+    // queryFn: async () => (await api.get('api/homepage/')).data,
+    queryFn: async () => (await api.get('homepage/')).data,
     refetchOnWindowFocus: false,
   })
 }
