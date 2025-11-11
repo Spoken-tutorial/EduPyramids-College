@@ -13,6 +13,7 @@ import PublicLayout from "./pages/public/PublicLayout";
 import Dashboard from "./features/dashboard/pages/Dashboard";
 import TrainingPlanner from "./features/training/pages/TrainingPlanner";
 import TrainingAttendance from "./features/training/pages/TrainingAttendance";
+import NotFound from "./pages/NotFound";
 
 
 export default function App(){
@@ -43,7 +44,7 @@ export default function App(){
           </Route>
 
           {/* catch-all for 404 */}
-          <Route path="*" element={<h1>Page Not Found</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
     </>
   )
