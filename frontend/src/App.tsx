@@ -13,6 +13,7 @@ import PublicLayout from "./pages/public/PublicLayout";
 import Dashboard from "./features/dashboard/pages/Dashboard";
 import TrainingPlanner from "./features/training/pages/TrainingPlanner";
 import TrainingAttendance from "./features/training/pages/TrainingAttendance";
+import RegisterPage from "./features/auth/pages/RegisterPage";
 
 
 export default function App(){
@@ -28,6 +29,7 @@ export default function App(){
           <Route element={<PublicLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route path="/domains" element={<DomainPage />} />
             <Route path="/tutorial-search" element={<TutorialSearch />} />
             <Route path="/domains/:slug" element={<CoursePage />} />

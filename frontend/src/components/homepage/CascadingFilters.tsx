@@ -83,20 +83,49 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
   }, [filters.foss, fossByName, data.languages]);
 
   /** ---- Styling ---- */
+  // const pillInputSx = (disabled = false) => ({
+  //   "& .MuiOutlinedInput-root": {
+  //     bgcolor: disabled ? theme.palette.action.disabledBackground : theme.palette.primary.main,
+  //     color: theme.palette.getContrastText(theme.palette.primary.main),
+  //     borderRadius: 0.5,
+  //     "& fieldset": { border: "none" },
+  //     "& .MuiSvgIcon-root": { color: theme.palette.getContrastText(theme.palette.primary.main) },
+  //     "& input": { cursor: "pointer" },
+  //   },
+  //   "& .MuiInputLabel-root": {
+  //     color: theme.palette.getContrastText(theme.palette.primary.main),
+  //     "&.Mui-focused": { color: theme.palette.getContrastText(theme.palette.primary.main) },
+  //   },
+  // });
+
+
   const pillInputSx = (disabled = false) => ({
-    "& .MuiOutlinedInput-root": {
-      bgcolor: disabled ? theme.palette.action.disabledBackground : theme.palette.primary.main,
-      color: theme.palette.getContrastText(theme.palette.primary.main),
-      borderRadius: 0.5,
-      "& fieldset": { border: "none" },
-      "& .MuiSvgIcon-root": { color: theme.palette.getContrastText(theme.palette.primary.main) },
-      "& input": { cursor: "pointer" },
+  "& .MuiOutlinedInput-root": {
+    bgcolor: disabled
+      ? theme.palette.action.disabledBackground
+      : theme.palette.primary.main,
+
+    color: theme.palette.common.white,
+    borderRadius: 0.5,
+    "& fieldset": { border: "none" },
+    "& .MuiSvgIcon-root": {
+      color: theme.palette.common.white,
     },
-    "& .MuiInputLabel-root": {
-      color: theme.palette.getContrastText(theme.palette.primary.main),
-      "&.Mui-focused": { color: theme.palette.getContrastText(theme.palette.primary.main) },
-    },
-  });
+    "& input": { cursor: "pointer" },
+  },
+
+  // NORMAL (not shrunk)
+  "& .MuiInputLabel-root": {
+    color: theme.palette.common.white,
+  },
+
+  // SHRUNKEN (floating label)
+  "& .MuiInputLabel-shrink": {
+    color: theme.palette.grey[300],   // <-- VERY IMPORTANT
+    fontWeight: 600,
+  }
+});
+
 
   const handleReset = () => {
     resetStore();
@@ -115,7 +144,11 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
             options={data.domains}
             getOptionLabel={(o) => o.name}
             isOptionEqualToValue={(o, v) => o.id === v.id}
-            renderInput={(params) => <TextField {...params} label="Domain" size="small" sx={pillInputSx()} />}
+            renderInput={(params) => <TextField {...params} 
+            placeholder="Domain" 
+            size="small" 
+           InputLabelProps={{ shrink: false }}
+            sx={pillInputSx()} />}
             clearOnEscape
           />
         </Grid>
@@ -128,7 +161,11 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
             options={fossOptions}
             getOptionLabel={(o) => o.name}
             isOptionEqualToValue={(o, v) => o.id === v.id}
-            renderInput={(params) => <TextField {...params} label="FOSS" size="small" sx={pillInputSx()} />}
+            renderInput={(params) => <TextField {...params} 
+            placeholder="FOSS" 
+            size="small" 
+           InputLabelProps={{ shrink: false }}
+            sx={pillInputSx()} />}
             clearOnEscape
           />
         </Grid>
@@ -142,7 +179,12 @@ export default function CascadingFiltersManyToMany({ data }: Props) {
             getOptionLabel={(o) => o.name}
             isOptionEqualToValue={(o, v) => o.id === v.id}
             renderInput={(params) => (
-              <TextField {...params} label="Language" size="small" disabled={!filters.foss} sx={pillInputSx(!filters.foss)} />
+              <TextField {...params} 
+              placeholder="Language" 
+              size="small" 
+              disabled={!filters.foss} 
+              InputLabelProps={{ shrink: false }}
+              sx={pillInputSx(!filters.foss)} />
             )}
             clearOnEscape
           />
