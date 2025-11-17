@@ -36,12 +36,16 @@ export default function Footer() {
         mt: 8,
       }}
     >
-      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 4, md: 6 } }}>
-        <Grid container spacing={{ xs: 4, md: 6 }} alignItems="flex-start">
+      <Container maxWidth={false} sx={{ px: { xs: 2, sm: 4, md: 6 } }}>
+        <Grid container spacing={{ xs: 4, md: 6 }}
+          alignItems="flex-start"
+        >
           <Grid size={{ xs: 12, md: 8 }}>
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {[footerLinks.column1, footerLinks.column2, footerLinks.column3, footerLinks.column4].map((column, index) => (
-                <Grid key={index} size={{ xs: 6, sm: 3 }} sx={{ pl: index === 0 ? 0 : undefined }}>
+                <Grid key={index} size={{ xs: 6, sm: 3 }}
+                // sx={{ pl: index === 0 ? 0 : undefined }}
+                >
                   {column.map((link) => (
                     <Link
                       key={link.label}
@@ -49,7 +53,10 @@ export default function Footer() {
                       color="inherit"
                       underline="none"
                       display="block"
-                      sx={{ mb: 1, fontSize: "0.875rem" }}
+                      sx={{
+                        mb: 1,
+                        // fontSize: "0.875rem"
+                      }}
                     >
                       {link.label}
                     </Link>
@@ -90,38 +97,99 @@ export default function Footer() {
                 </IconButton>
               ))}
             </Box>
+          </Grid>
 
-            {/* Footer Copyright and License Section - below social icons */}
+          <Grid
+            size={{ xs: 12, lg: 4 }}
+            sx={{
+              borderLeft: { lg: "1px solid rgba(255,255,255,0.35)" },
+              pl: { lg: 5 },
+              // mt: { xs: 4, lg: 0 },
+            }}
+          >
             <Box
               sx={{
-                mt: { xs: 4, md: 5 },
-                pt: { xs: 3, md: 4 },
-                borderTop: "1px solid rgba(255,255,255,0.2)",
-                fontSize: "0.75rem",
+                display: "flex",
+                flexDirection: { xs: "column", lg: "row" }, // ⬅️ Horizontal only on lg+
+                alignItems: { xs: "center", lg: "flex-start" },
+                gap: { xs: 3, lg: 4 },
               }}
             >
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
-                <Box
-                  component="img"
-                  src={footerConfig.license.badge}
-                  alt="Creative Commons License"
-                  sx={{ height: 24, width: 66 }}
-                />
-                <Typography variant="caption" sx={{ fontSize: "0.75rem" }}>
-                  Spoken Tutorial, created on or before {footerConfig.license.year}, by{" "}
-                  <Link href={footerConfig.license.iitbUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
-                    IIT Bombay
-                  </Link>
-                  {" "}is licensed under a{" "}
-                  <Link href={footerConfig.license.licenseUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
-                    Creative Commons Attribution-ShareAlike 4.0 International License
-                  </Link>
-                  , except where stated otherwise
-                </Typography>
-              </Box>
+              <Box
+                component="img"
+                src={footerConfig.logo.src}
+                alt={footerConfig.logo.alt}
+                sx={{
+                  width: 140,
+                  height: 140,
+                  border: "2px solid white",
+                  borderRadius: 2,
+                  objectFit: "contain",
+                  p: 1,
+                  // display: "block",
+                  // mx: "auto",
+                  // mb: 1,
+                }}
+              />
+              <Box sx={{ maxWidth: 260 }}>
 
-              <Typography variant="caption" sx={{ fontSize: "0.75rem", display: "block", mb: 0.5 }}>
-                Based on a work at{" "}
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontWeight: 600,
+                    mb: 1,
+                    textAlign: { xs: "center", lg: "left" },
+                  }}
+                >
+                  {footerConfig.contact.title}
+                </Typography>
+
+                {footerConfig.contact.lines.map((line, index) => (
+                  <Typography
+                    key={index}
+                    variant="body2"
+                    sx={{
+                      mb: 0.3,
+                      fontSize: "0.875rem",
+                      textAlign: { xs: "center", lg: "left" },
+                    }}
+                  >
+                    {line}
+                  </Typography>
+                ))}
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+
+        {/* Footer Copyright and License Section - below social icons */}
+        <Box
+          sx={{
+            mt: { xs: 4, md: 5 },
+            pt: { xs: 3, md: 4 },
+            borderTop: "1px solid rgba(255,255,255,0.2)",
+            // fontSize: "0.75rem",
+            textAlign: "left",
+          }}
+        >
+          <Box sx={{ mb: 2 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+              <Box
+                component="img"
+                src={footerConfig.license.badge}
+                alt="Creative Commons License"
+                sx={{ height: 24, width: 66 }}
+              />
+              <Typography variant="body2" sx={{ fontSize: "0.75rem", lineHeight: 1.5 }}>
+                Spoken Tutorial, created on or before {footerConfig.license.year}, by{" "}
+                <Link href={footerConfig.license.iitbUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
+                  IIT Bombay
+                </Link>
+                {" "}is licensed under a{" "}
+                <Link href={footerConfig.license.licenseUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
+                  Creative Commons Attribution-ShareAlike 4.0 International License
+                </Link>
+                , except where stated otherwise.  Based on a work at{" "}
                 <Link href={footerConfig.license.workUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
                   {footerConfig.license.workUrl}
                 </Link>
@@ -129,55 +197,14 @@ export default function Footer() {
                 <Link href={footerConfig.license.workUrl} target="_blank" rel="noopener noreferrer" sx={{ color: "inherit", textDecoration: "underline" }}>
                   {footerConfig.license.workUrl}
                 </Link>
-              </Typography>
-
-              <Typography variant="caption" sx={{ fontSize: "0.75rem", display: "block" }}>
-                <strong>Spoken Tutorial, developed at IIT Bombay</strong>, is brought to you by EduPyramids Educational Services Private Limited (DBA: EduPyramids Educational Services Pvt Ltd.). EduPyramids Educational Services Private Limited is currently incubated at SINE IIT Bombay. All transactions will be processed under the name EduPyramids Educational Services Private Limited.
+                .
               </Typography>
             </Box>
-          </Grid>
-
-          <Grid
-            size={{ xs: 12, md: 4 }}
-            sx={{
-              borderLeft: { md: "1px solid rgba(255,255,255,0.35)" },
-              pl: { md: 5 },
-              mt: { xs: 4, md: 0 },
-            }}
-          >
-            <Box
-              component="img"
-              src={footerConfig.logo.src}
-              alt={footerConfig.logo.alt}
-              sx={{
-                width: 140,
-                height: 140,
-                border: "2px solid white",
-                borderRadius: 2,
-                objectFit: "contain",
-                p: 1,
-                display: "block",
-                mx: "auto",
-                mb: 1,
-              }}
-            />
-
-            <Typography variant="body2" sx={{ fontSize: "0.875rem", mb: { xs: 3, md: 5 }, textAlign: "center" }}>
-              Developed at IIT Bombay
-            </Typography>
-
-            <Box sx={{ maxWidth: 260 }}>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                {footerConfig.contact.title}
-              </Typography>
-              {footerConfig.contact.lines.map((line, index) => (
-                <Typography key={index} variant="body2" sx={{ mb: 0.25, fontSize: "0.875rem" }}>
-                  {line}
-                </Typography>
-              ))}
-            </Box>
-          </Grid>
-        </Grid>
+          </Box>
+          <Typography variant="body2" sx={{ fontSize: "0.75rem", display: "block", lineHeight: 1.5 }}>
+            <strong>Spoken Tutorial, developed at IIT Bombay</strong>, is brought to you by EduPyramids Educational Services Private Limited (DBA: EduPyramids Educational Services Pvt Ltd.). EduPyramids Educational Services Private Limited is currently incubated at SINE IIT Bombay. All transactions will be processed under the name EduPyramids Educational Services Private Limited.
+          </Typography>
+        </Box>
       </Container>
     </Box>
   );

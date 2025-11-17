@@ -11,6 +11,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import { useTheme } from "@mui/material/styles";
 import BrandLogo from "./BrandLogo";
 import Login from "../../features/auth/components/Login";
+import Register from "../../features/auth/pages/RegisterPage";
 import { useNavigate } from "react-router-dom";
 
 
@@ -97,12 +98,17 @@ export default function ResponsiveAppBar() {
   const closeDesktopMenu = () => setDesktopMenu({ key: null, anchor: null });
 
   /* ---------- Navigate (stub) ---------- */
-  const go = (label: string) => {
-    console.log("navigate to:", label);
-    navigate("login/")
-    closeDesktopMenu();
-    setDrawerOpen(false);
-  };
+ const go = (label: string) => {
+  console.log("navigate to:", label);
+
+  if (label === "Login") navigate("/login");
+  else if (label === "Register") navigate("/register");
+  else navigate("/");
+
+  closeDesktopMenu();
+  setDrawerOpen(false);
+};
+
 
   /* ---------- Helpers ---------- */
   const groupBySection = (children: ChildLink[] = []) => {
@@ -132,6 +138,10 @@ export default function ResponsiveAppBar() {
             sx={{ width: 56, height: 56, borderRadius: "50%", bgcolor: "common.white", p: 0.5, mr: { xs: 1, md: 2 } }}
           /> */}
            {/* LEFT logo (keep label hidden on xs; show from md if you want) */}
+           <Box
+  sx={{ cursor: "pointer" }}
+  onClick={() => navigate("/")}
+>
         <BrandLogo
         src={`${mediaUrl}/logos/spoken_tutorial_logo.png`}
         alt="Spoken Tutorial"
@@ -141,7 +151,7 @@ export default function ResponsiveAppBar() {
         
         />
 
-
+</Box>
           {/* Desktop nav (centered) */}
           <Box
             sx={{
@@ -287,7 +297,10 @@ export default function ResponsiveAppBar() {
   <Button variant="contained" color="secondary" onClick={() => go("Register")} sx={{ fontWeight: 800 }}>
     Register
   </Button>
-
+<Box
+  sx={{ cursor: "pointer" }}
+  onClick={() => navigate("/")}
+>
   <BrandLogo
     src={`${mediaUrl}/logos/edupyramids_logo.png`}
     alt="EduPyramids"
@@ -296,7 +309,7 @@ export default function ResponsiveAppBar() {
     height={60}
   />
 </Box>
-
+</Box>
           
 
           {/* Hamburger (mobile) */}
@@ -359,7 +372,9 @@ export default function ResponsiveAppBar() {
         </List>
 
         <Divider />
-        <Box sx={{ p: 2, display: "flex", gap: 1 }}>
+        <Box 
+        sx={{ p: 2, display: "flex", gap: 1 }}
+        >
           <Button fullWidth variant="outlined" color="primary" onClick={() => go("Login")}>
             Login
           </Button>
